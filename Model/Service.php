@@ -46,6 +46,5 @@ class Service extends WidShopAppModel {
 	public function afterSave(){
 		parent::afterSave();
 	}
-
 }
 ?>

@@ -1,4 +1,10 @@
 <?php 
+/**
+* This is based on order creted by users.
+* Here all types of order listed.
+* Currenlty it is in development mode
+*/
+
 class OrdersController extends WidShopAppController {
 	var $name = 'Orders';
 	public function confirm($hashId) {
@@ -7,7 +13,7 @@ class OrdersController extends WidShopAppController {
 		if(isset($product))  {
 			$this->set('product', $product);
 		} else {
-			$this->Session->setFlash('Invalid order, Please try again');
+			$this->Session->setFlash(__('Invalid order, Please try again'));
 			$this->redirect(SITE_URL);
 			exit;
 		}

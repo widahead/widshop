@@ -27,11 +27,9 @@ class Offer extends WidShopAppModel {
 		)
 	);
 	public function validateDateTime() {
-		/*if(strtotime($this->data['Offer']['start_date']) < time() )
-				return $this->validate['start_date']['Rule-2']['message'] = 'Date time must be greter than current date';
-		else */
-		if((strtotime($this->data['Offer']['start_date']) >= strtotime($this->data['Offer']['end_date'])) && !$this->data['Offer']['one_day_deal'])
-				return  $this->validate['start_date']['Rule-2']['message'] = 'End Date time must be greter than end Start date time';
+		if((strtotime($this->data['Offer']['start_date']) >= strtotime($this->data['Offer']['end_date'])) && !$this->data['Offer']['one_day_deal']) {
+			return  $this->validate['start_date']['Rule-2']['message'] = 'End Date time must be greter than end Start date time';
+		}
 		else 
 			return true;
 	}

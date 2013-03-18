@@ -34,5 +34,9 @@ class Category extends WidShopAppModel {
 		$this->data['Category']['url_key'] = $slug ;
 		$this->updateAll(array('url_key' => "'".$slug."'"), array('id' => $this->data['Category']['id']));
 	}
+	public function getCategoryIdByTitle($title = null) {
+		$category = $this->find('first', array('conditions' => array('url_key' => $title), 'fields' => 'id'));
+		return $category['Category']['id'];
+	}
 }
 ?>

@@ -1,4 +1,9 @@
 <?php
+/** 
+* Create category for product
+* Manage category and perform operation like edit and delete
+* These categories are showing on left panel of view page as menu.
+**/
 class CategoriesController extends WidShopAppController {
 	var $name = 'Categories';
 	public $layout = 'admin';
@@ -14,29 +19,31 @@ class CategoriesController extends WidShopAppController {
 			if($this->Category->validates()) {
 				$this->request->data['Category']['description'] = htmlentities($this->request->data['Category']['description']);
 				if($this->Category->save($this->request->data)) {
-					$this->Session->setFlash('Category created successfully');
-					$this->redirect('/categories/');
+					$this->Session->setFlash(__('Category created successfully'));
+					$this->redirect(array('controller' => 'categories', 'action' => 'index'));
+					exit;
 				}
 			}
 		}
 	}
-	function editCategory($id) {
+	function editCategory($id = null) {
 		if(isset($this->request->data) && !empty($this->request->data)) {
 			$this->Category->set($this->request->data);
 			if($this->Category->validates()) {
 				$this->request->data['Category']['description'] = htmlentities($this->request->data['Category']['description']);
 				if($this->Category->save($this->request->data)) {
-					$this->Session->setFlash('Category updated successfully');
-					$this->redirect('/categories/');
+					$this->Session->setFlash(__('Category updated successfully'));
+					$this->redirect(array('controller' => 'categories', 'action' => 'index'));
+					exit;
 				}
 			}
 		}
-		if(!$this->request->data)
+		if(empty($this->request->data)) {
 			$this->request->data = $this->Category->findById($id);
-		
+		}
 	}
 	public function delete($id = null) {
-		if($id) {
+		if(isset($id)) {
 			$offer_id_array = array();
 			$offer_id = array();
 			$this->Offer->unbindModel(array('hasOne' => array('RewriteUrl')));
@@ -62,9 +69,9 @@ class CategoriesController extends WidShopAppController {
 			
 			$this->Service->deleteAll(array('category_id' => $id));
 			$this->Category->delete($id);
-			$this->Session->setFlash('Category deleted successfully');
+			$this->Session->setFlash(__('Category deleted successfully'));
 		}
-		$this->redirect('/categories/');
+		$this->redirect(array('controller' => 'categories', 'action' => 'index'));
 		exit;
 	}
 	public function beforeFilter() {

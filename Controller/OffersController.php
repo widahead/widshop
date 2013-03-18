@@ -1,4 +1,9 @@
 <?php 
+/** 
+* Create offer for services and we can manage these offers.
+* We can create normal offer with single and multiple products.
+* We can manage one day deal or also hour based deals 
+*/
 class OffersController extends WidShopAppController {
 	var $name = 'Offers';
 	public $layout = 'admin';
@@ -46,8 +51,9 @@ class OffersController extends WidShopAppController {
 
 				$this->request->data['Offer']['description'] = htmlentities($this->request->data['Offer']['description']);
 				if($this->Offer->save($this->request->data)) {
-					$this->Session->setFlash('Offer created successfully');
-					$this->redirect('/offers/');
+					$this->Session->setFlash(__('Offer created successfully'));
+					$this->redirect(array('controller' =>'offers', 'action' => 'index'));
+					exit;
 				}
 			}
 			else {
@@ -57,8 +63,9 @@ class OffersController extends WidShopAppController {
 				$this->request->data['Offer']['thumb2'] = $offerDetailToRemainStatus['Offer']['thumb2'];
 			}
 		}
-		if(empty($this->request->data) && isset($id))
-				$this->request->data = $this->Offer->findById($id);
+		if(empty($this->request->data) && isset($id)) {
+			$this->request->data = $this->Offer->findById($id);
+		}
 	}
 	public function BeforeFilter() {
 		parent::beforeFilter();
@@ -83,7 +90,7 @@ class OffersController extends WidShopAppController {
 			$this->set('serviceList', $serviceCapt);
 			$this->set('offer', $offerDetail);
 		} else {
-			$this->Session->setFlash('Invalid url');
+			$this->Session->setFlash(__('Invalid url'));
 			$this->redirect(SITE_URL);
 			exit;
 		}
@@ -91,8 +98,9 @@ class OffersController extends WidShopAppController {
 	public function delete($id) {
 		if(isset($id)){
 			$this->Offer->delete($id);
-			$this->Session->setFlash('Offer deleted successfully');
+			$this->Session->setFlash(__('Offer deleted successfully'));
 		}
-		$this->redirect('/offers/');
+		$this->redirect(array('controller' =>'offers', 'action' => 'index'));
+		exit;
 	}
 }
