@@ -1,0 +1,1 @@
+[09-Oct-2012 00:17:07] PHP Fatal error:  Call to a member function resize() on a non-object in /home/pearls/public_html/cake/app/View/Services/view.ctp on line 4
