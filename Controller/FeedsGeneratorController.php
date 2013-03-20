@@ -1,7 +1,7 @@
 <?php 
 class FeedsGeneratorController extends WidShopAppController {
 	var $name = 'FeedsGenerator';
-	public function index() {
+	public function admin_index() {
 		$products = $this->Service->find('all');
 		$productCollection = array();
 		$counter = 0;		

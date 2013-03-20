@@ -25,3 +25,9 @@ Change the setting as required on WidShop/Config/bootstrap.php
 
 Step 7:
 Import sql file
+
+
+step 8:
+Copy these lines to app/Config/core.php
+
+Configure::write('Routing.prefixes', array('admin'));

@@ -27,7 +27,7 @@
 						<a href="http://www.widahead.com/users/login">Download Code</a>
 					</div>
 					<div style="float:right; margin-left:20px;"><?php echo $this->Html->link('Features', array('controller' => 'pages', 'action' => 'work'));?></div>
-					<div style="float:right;"><?php echo $this->Html->link('Admin Panel', array('controller' => 'categories', 'action' => 'index'));?></div>
+					<div style="float:right;"><?php echo $this->Html->link('Admin Panel', array('admin' => true, 'controller' => 'categories', 'action' => 'index'));?></div>
 					<div style="clear:both"></div>
 				</div>
 				<h2 style="text-align:left;">CakePHP product management</h2>

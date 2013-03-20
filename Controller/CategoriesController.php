@@ -8,12 +8,12 @@ class CategoriesController extends WidShopAppController {
 	var $name = 'Categories';
 	public $layout = 'admin';
 	var $paginate;
-	function index() {
+	function admin_index() {
 		$this->paginate=array('limit' => 10,'order' => array('id' => 'desc'));
 		$categories =$this->paginate('Category');
 		$this->set('categories', $categories);
 	}
-	function addCategory() {
+	function admin_addCategory() {
 		if(isset($this->request->data) && !empty($this->request->data)) {
 			$this->Category->set($this->request->data);
 			if($this->Category->validates()) {
@@ -26,7 +26,7 @@ class CategoriesController extends WidShopAppController {
 			}
 		}
 	}
-	function editCategory($id = null) {
+	function admin_editCategory($id = null) {
 		if(isset($this->request->data) && !empty($this->request->data)) {
 			$this->Category->set($this->request->data);
 			if($this->Category->validates()) {

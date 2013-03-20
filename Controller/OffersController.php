@@ -7,12 +7,12 @@
 class OffersController extends WidShopAppController {
 	var $name = 'Offers';
 	public $layout = 'admin';
-	function index(){
+	function admin_index(){
 		$this->paginate=array('limit' => 10,'order' => array('id' => 'desc'));
 		$offers =$this->paginate('Offer');
 		$this->set('offers', $offers);	
-	}
-	public function adminManageOffer($id = null) {
+	}	
+	public function admin_manageOffer($id = null) {
 		$this->Offer->set($this->request->data);
 		if(isset($this->request->data) && !empty($this->request->data)) {
 			if($this->Offer->validates()) {
@@ -95,7 +95,7 @@ class OffersController extends WidShopAppController {
 			exit;
 		}
 	}
-	public function delete($id) {
+	public function admin_delete($id) {
 		if(isset($id)){
 			$this->Offer->delete($id);
 			$this->Session->setFlash(__('Offer deleted successfully'));

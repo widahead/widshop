@@ -4,7 +4,7 @@
 */
 class CurrenciesController extends WidShopAppController {
 	public $layout = 'admin';
-	public function index() {
+	public function admin_index() {
 		$this->Currency->set($this->request->data);
 		if(isset($this->request->data) && !empty($this->request->data)) {
 			if($this->Currency->validates()) {

@@ -5,7 +5,7 @@
 
 class ServicesController extends WidShopAppController {
 	public $layout = 'admin';
-	public function index() {
+	public function admin_index() {
 		$this->paginate=array('limit' => 10,'order' => array('id' => 'desc'));
 		$services =$this->paginate('Service');
 		$i = 0;
@@ -15,7 +15,7 @@ class ServicesController extends WidShopAppController {
 		}
 		$this->set('services', $services);		
 	}
-	public function manageService($id = null) {
+	public function admin_manageService($id = null) {
 		if(isset($this->request->data) && !empty($this->request->data)) {
 			$this->Service->set($this->request->data);
 			if($this->Service->validates()) {
@@ -40,7 +40,7 @@ class ServicesController extends WidShopAppController {
 			$this->request->data = $this->Service->findById($id);
 		}
 	}
-	public function delete($id) {
+	public function admin_delete($id) {
 		if(isset($id)){
 			$this->Offer->unbindModel(array('hasOne' => array('RewriteUrl')));
 			$this->Offer->deleteAll(array('FIND_IN_SET('.$id.', service_id)'));
