@@ -19,5 +19,15 @@ class RewriteUrl extends WidShopAppModel {
 		}
 		return $productInfo[$HashDetail['RewriteUrl']['controller_name']];
 	}
+	public function getUrlRewriteinfoByIdentity($identity) {
+		$checkPrd = $this->find('first', array(
+					'conditions' => array('identity' =>$identity),
+					'fields' => array('controller_name', 'service_id', 'offer_id')
+				));
+		if(empty($checkPrd)) {
+			return null;
+		}
+		return $checkPrd['RewriteUrl'];
+	}
 }
 ?>

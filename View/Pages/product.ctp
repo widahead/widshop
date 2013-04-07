@@ -20,7 +20,9 @@
 					</div>
 				</div>
 				<div>
-					<div class="price"><?php echo $currency.''.$product['amount'];?></div>
+					<div class="price">
+						<?php echo $this->Number->currency($product['amount'], $currency_code);?>
+					</div>
 				</div>
 				<div>
 					<?php echo $this->Html->image('/wid_shop/img/order_now_button.png', array('url' => array('controller' => $product['product_url'], 'action' => 'view', 'slug' =>$product['urlSlug'])))?>

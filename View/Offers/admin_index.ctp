@@ -17,10 +17,10 @@
 				<td style='border-left: 1px solid rgb(134, 133, 133);'>".$this->Image->resize($offer['Offer']['image'], 100, 100, true)."</td>
 				<td>".$offer['Offer']['name']."</td>
 				<td>".$offer['Offer']['description']."</td>";
-			echo "<td>";
+			/*echo "<td>";
 				echo $this->Html->link('Delete', array('controller' => 'offers', 'action' => 'delete', $offer['Offer']['id']));
-				echo " / ";
-				echo $this->Html->link('Edit', array('controller' => 'offers', 'action' => 'manageOffer', $offer['Offer']['id']));
+				echo " / ";*/
+				echo "<td>".$this->Html->link('Edit', array('controller' => 'offers', 'action' => 'manageOffer', $offer['Offer']['id']));
 		echo "</td>";
 	echo "</tr>";
 	} ?>

@@ -11,21 +11,26 @@ class Service extends WidShopAppModel {
 	
 	public $validate = array(
 		'category_id' => array(
-		'rule' => array('comparison', '>' , '0'),
-		'message' => 'Please select category'
+			'rule' => array('comparison', '>' , '0'),
+			'message' => 'Please select category'
 		),
 		'name' => array(
-		'rule' => 'notEmpty',
-		'message' => 'Please enter name'
+			'rule' => 'notEmpty',
+			'message' => 'Please enter name'
 		),
 		'amount' => array(
-		'rule' => 'numeric',
-		'message' => 'Please enter numeric value'
+			'rule' => 'numeric',
+			'message' => 'Please enter numeric value'
 		), 
 		'description' => array(
-		'rule' => 'notEmpty',
-		'message' => 'Please enter description'
-		)
+			'rule' => 'notEmpty',
+			'message' => 'Please enter description'
+		),
+		'image' => array(
+			'rule' =>  array('validateImgExt'),
+			'message' => 'Image should have jpg, png, jpeg or gif format.'
+		),
+
 	);
 	public function getAllServices() {
 		$serviceArray = array();

@@ -11,15 +11,15 @@
 					$category['Category']['name']
 				."</td>
 				<td>".$category['Category']['description']."</td>";
-		echo	"<td>".$this->Html->link(
+		/*echo	"<td>".$this->Html->link(
 						'Delete', 
 						array(
 							'controller' => 'categories', 'action' => 'delete', 
 							$category['Category']['id']
 							)
 					);
-			echo " / ";
-			echo	$this->Html->link(
+			echo " / "; */
+			echo	"<td>".$this->Html->link(
 						'Edit', 
 						array(
 							'controller' => 'categories', 'action' => 'editCategory', $category['Category']['id']

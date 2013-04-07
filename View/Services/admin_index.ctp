@@ -20,9 +20,9 @@
 				<td>".$service['Service']['name']."</td>
 				<td>".$service['Service']['description']."</td>";
 			echo "<td>";
-			echo $this->Html->link('Delete', array('controller' => 'services', 'action' => 'delete', $service['Service']['id']));
-			echo " / ";
-			echo $this->Html->link('Edit', array('controller' => 'services', 'action' => 'manageService', $service['Service']['id']));
+			/*echo $this->Html->link('Delete', array('controller' => 'services', 'action' => 'delete', $service['Service']['id']));
+			echo " / ";*/
+			echo "<td>".$this->Html->link('Edit', array('controller' => 'services', 'action' => 'manageService', $service['Service']['id']));
 		echo "</td>";
 	echo "</tr>";
 	} ?>

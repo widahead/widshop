@@ -29,10 +29,14 @@ class ServicesController extends WidShopAppController {
 					$this->request->data['Service']['image'] = null;
 				}
 				$this->request->data['Service']['description'] = htmlentities($this->request->data['Service']['description']);
-				if($this->Service->save($this->request->data)) {
+				if($this->Service->save($this->request->data, false)) {
 					$this->Session->setFlash(__('Service created successfully'));
 					$this->redirect(array('controller' => 'services', 'action' => 'index'));
 					exit;
+				}
+			} else {
+				if(isset($this->request->data['Service']['old_image'])) {
+					$this->request->data['Service']['image'] = $this->request->data['Service']['old_image'];
 				}
 			}
 		}
@@ -41,6 +45,9 @@ class ServicesController extends WidShopAppController {
 		}
 	}
 	public function admin_delete($id) {
+		$this->Session->setFlash(__('Detetion is disabled in Development Mode.'));
+		$this->redirect(array('controller' => 'services', 'action' => 'index'));
+		exit;
 		if(isset($id)){
 			$this->Offer->unbindModel(array('hasOne' => array('RewriteUrl')));
 			$this->Offer->deleteAll(array('FIND_IN_SET('.$id.', service_id)'));

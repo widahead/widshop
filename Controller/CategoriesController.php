@@ -43,6 +43,9 @@ class CategoriesController extends WidShopAppController {
 		}
 	}
 	public function delete($id = null) {
+		$this->Session->setFlash(__('Detetion is disabled in Development Mode.'));
+		$this->redirect(array('controller' => 'categories', 'action' => 'index'));
+		exit;
 		if(isset($id)) {
 			$offer_id_array = array();
 			$offer_id = array();

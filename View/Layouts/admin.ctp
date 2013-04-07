@@ -32,8 +32,9 @@
 					<div style="float:left; padding-left:10px;"><?php echo $this->Html->link('Manage Offer', array('controller' => 'offers', 'action' => 'index'));?></div>
 					<div style="float:left; padding-left:10px;"><?php echo $this->Html->link('Manage Currency', array('controller' => 'currencies', 'action' => 'index'));?></div>
 					<div style="float:left; padding-left:10px;"><?php echo $this->Html->link('Feed Reader', array('controller' => 'feeds_generator'));?></div>
-					
-					<div style="float:right; padding-left:10px;"><?php echo $this->Html->link('Home', array('controller' => 'pages', 'action' => 'display'));?></div>
+					<div style="float:right; padding-left:10px;">
+						<a href="<?php echo SITE_URL;?>"> Home </a>
+					</div>
 					<div style="clear:both"></div>
 				</div>
 				<div style="margin-top:20px">

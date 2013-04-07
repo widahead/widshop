@@ -33,14 +33,13 @@ App::uses('Controller', 'Controller');
  */
 class WidShopAppController extends AppController {
 	var $uses = array('WidShop.Category', 'WidShop.Service', 'WidShop.Offer', 'WidShop.RewriteUrl', 'WidShop.Currency');
-	public $helpers = array('Html', 'Session', 'WidShop.Image');
+	public $helpers = array('Html', 'Session', 'WidShop.Image', 'Number');
 	public $components = array('Session');
-	public function beforeRender(){
-		$currency = '';
-		$currency = $this->Currency->getCurrentCurrency();
-		$this->set('currency', $currency);
+	public function beforeRender () {
+		$currency_code = $this->Currency->getCurrentCurrencyCode();
+		$this->set('currency_code', $currency_code);
 	}
 	public function beforeFilter() {
-			parent::beforeFilter();
-		}
+		parent::beforeFilter();
+	}
 }

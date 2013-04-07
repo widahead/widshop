@@ -49,18 +49,20 @@ class OffersController extends WidShopAppController {
 				else
 					$this->request->data['Offer']['is_bundle'] = 0;
 
-				$this->request->data['Offer']['description'] = htmlentities($this->request->data['Offer']['description']);
-				if($this->Offer->save($this->request->data)) {
+				if($this->Offer->save($this->request->data, false)) {
 					$this->Session->setFlash(__('Offer created successfully'));
 					$this->redirect(array('controller' =>'offers', 'action' => 'index'));
 					exit;
 				}
-			}
-			else {
+			} else if(isset($id)){
 				$offerDetailToRemainStatus = $this->Offer->findById($id);
 				$this->request->data['Offer']['image'] = $offerDetailToRemainStatus['Offer']['image'];
 				$this->request->data['Offer']['thumb1'] = $offerDetailToRemainStatus['Offer']['thumb1'];
 				$this->request->data['Offer']['thumb2'] = $offerDetailToRemainStatus['Offer']['thumb2'];
+			} else {
+				$this->request->data['Offer']['image'] = null;
+				$this->request->data['Offer']['thumb1'] = null;
+				$this->request->data['Offer']['thumb2'] = null;
 			}
 		}
 		if(empty($this->request->data) && isset($id)) {
@@ -96,6 +98,9 @@ class OffersController extends WidShopAppController {
 		}
 	}
 	public function admin_delete($id) {
+		$this->Session->setFlash(__('Detetion is disabled in Development Mode.'));
+		$this->redirect(array('controller' => 'offers', 'action' => 'index'));
+		exit;
 		if(isset($id)){
 			$this->Offer->delete($id);
 			$this->Session->setFlash(__('Offer deleted successfully'));

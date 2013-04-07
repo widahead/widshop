@@ -37,4 +37,14 @@ class WidShopAppModel extends AppModel {
 		if ($i) $slug .= "-".$i;
 		return $slug.EXT;
 	}
+	public function validateImgExt($check) {
+		if(empty($check[key($check)]['name'])) {
+			return true;
+		}
+		$ext = pathinfo($check[key($check)]['name'], PATHINFO_EXTENSION);	
+		if(in_array($ext, array('jpg', 'png', 'jpeg', 'gif'))) {
+			return true;
+		}
+		return false;
+	}
 }

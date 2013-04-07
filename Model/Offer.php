@@ -4,16 +4,16 @@ class Offer extends WidShopAppModel {
 	public $hasOne = array('WidShop.RewriteUrl');
 	public $validate = array(
 		'service_id' => array(
-		'rule' => array('comparison', '>' , '0'),
-		'message' => 'Please select category'
+			'rule' => array('comparison', '>' , '0'),
+			'message' => 'Please select category'
 		),
 		'name' => array(
-		'rule' => 'notEmpty',
-		'message' => 'Please enter name'
+			'rule' => 'notEmpty',
+			'message' => 'Please enter name'
 		),			
 		'description' => array(
-		'rule' => 'notEmpty',
-		'message' => 'enter name'
+			'rule' => 'notEmpty',
+			'message' => 'enter name'
 		),			
 		'start_date' => array(
 			'Rule-1' => array(
@@ -22,8 +22,20 @@ class Offer extends WidShopAppModel {
 			)
 		),
 		'amount' => array(
-		'rule' => 'numeric',
-		'message' => 'Please enter numeric value'
+			'rule' => 'numeric',
+			'message' => 'Please enter numeric value'
+		),
+		'image' => array(
+			'rule' =>  array('validateImgExt'),
+			'message' => 'Image should have jpg, png, jpeg or gif format.'
+		),
+		'thumb1' => array(
+			'rule' =>  array('validateImgExt'),
+			'message' => 'Image should have jpg, png, jpeg or gif format.'
+		),
+		'thumb2' => array(
+			'rule' =>  array('validateImgExt'),
+			'message' => 'Image should have jpg, png, jpeg or gif format.'
 		)
 	);
 	public function validateDateTime() {

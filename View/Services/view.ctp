@@ -7,8 +7,10 @@
 	</div>
 	<div style="float:left;margin-left:50px;">
 		<h3><?php echo $service['name']?></h3>
-		<div style="float:left;">Price <?php echo $currency.''.$service['amount']?></div>
-			<div style="float:left; margin-left:20px;">
+		<div style="float:left;">
+			Price <?php echo $this->Number->currency($service['amount'], $currency_code);?>
+		</div>
+		<div style="float:left; margin-left:20px;">
 			<?php echo $this->Html->image('/wid_shop/img/buy.png', array('url' => array('controller' =>'orders', 'action' => 'confirm', $service['identity'])), array('style' => 'text-decoration:none;'))?>
 		</div>
 	

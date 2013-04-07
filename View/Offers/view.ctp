@@ -33,17 +33,21 @@
 				<div id="actualAmount"> 
 					<div> Total Amount </div>
 					<hr />
-					<div> <?php echo $currency.''.$offer['tot_amount']?></div>
+					<div> 
+						<?php echo $this->Number->currency($offer['tot_amount'], $currency_code); ?>
+					</div>
 				</div>
 				<div id="saveAmount">
 					<div> You Save </div>
 					<hr />
-					<div> <?php echo $currency.''.($offer['tot_amount'] - $offer['amount'])?></div>
+					<div> 
+						<?php echo $this->Number->currency($offer['tot_amount'] - $offer['amount'],  $currency_code);?>
+					</div>
 				</div>
 				<div id="currentAmount"> 
 					<div> Current Amount  </div>
 					<hr />
-					<div> <?php echo $currency.''.$offer['amount']?></div>
+					<div> <?php echo $this->Number->currency($offer['amount'], $currency_code)?></div>
 				</div>
 				<br class="clear"/>
 			</div>
@@ -60,7 +64,7 @@
 			<h5 style="text-decoration:underline; margin-bottom:5px;"> Services Included </h5>
 			<?php 
 				foreach($serviceList as $service) {
-					echo '<div>'.$this->Html->link($service['Service']['name'], array('controller' => 'service', 'action' =>$service['RewriteUrl']['url_key'])).'</div>';
+					echo '<div>'.$this->Html->link($service['Service']['name'], array('controller' => 'services', 'action' =>'view', 'slug' =>$service['RewriteUrl']['url_key'])).'</div>';
 				}
 			?>
 		</div>
