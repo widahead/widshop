@@ -109,3 +109,8 @@ Change Paypal setting
 	a. API_SIGNATURE
 	b. API_USERNAME
 	c. API_PASSWORD
+
+Step 10:
+Execute this DB Scrript
+ALTER TABLE `payments`  ADD `token` VARCHAR(50) NULL COMMENT 'Paypal Token' AFTER `amount`,  ADD `correlationid` VARCHAR(50) NULL AFTER `token`,  ADD `timestamp` VARCHAR(50) NULL COMMENT 'Paypal Timestamp' AFTER `correlationid`;
+ALTER TABLE `payments`  ADD `transaction_id` VARCHAR(100) NULL COMMENT 'Paypal TXN' AFTER `token`;

@@ -33,25 +33,30 @@
 		<div style="clear:both;"></div>
 	</div>
 	<hr style="margin-top:50px;"/>
+	<div class="payment_box">
+		<h2> Payment</h2>
+		<div style="float:left;">
+			<?php echo $this->Form->input('payment_type', array('type' => 'radio','options'=> array('ExpressCheckout' => 'Express Checkout', 'DoDirectPayment' => 'Paypal Direct Payment'), 'legend' => false, 'default' => 'ExpressCheckout', 'class' => 'paymnt_opt'));?>
 
-	<div>
-		<div style="text-align:left;"><h3>Card Information (Paypal Checkout)</h3></div>
-		<div style="float:left; width:100px;">Card Type</div>
-		<div style="float:left; margin-left:20px;"><?php echo $this->Form->input('ctype', array('label' => false));?></div>
-		<div style="float:left; width:150px;">Card Number</div>
-		<div style="float:left;"><?php echo $this->Form->input('cnumber', array('label' => false));?></div>
-		<div style="clear:both"></div>
-		<div style="float:left; width:100px; margin-top:20px;">Card Code</div>
-		<div style="float:left; margin-left:20px;margin-top:20px;"><?php echo $this->Form->input('c_secure_code', array('label' => false));?></div>
-		<div style="float:left; width:200px; margin-top:20px;">Expire On</div>
-		<div style="float:left; margin-left:20px;margin-top:20px;">
-			<div style="float:left;">
-				<?php echo $this->Form->input('exp_year', array('label' => false, 'style' => 'width:100px;', 'default' => 'Year'));?>
+		</div>
+		<div style="float:left; display:none;" id="paypal_card_box">
+			<div style="float:left; width:100px;">Card Type</div>
+			<div style="float:left; margin-left:20px;"><?php echo $this->Form->input('ctype', array('label' => false));?></div>
+			<div style="float:left; width:150px;">Card Number</div>
+			<div style="float:left;"><?php echo $this->Form->input('cnumber', array('label' => false));?></div>
+			<div style="clear:both"></div>
+			<div style="float:left; width:100px; margin-top:20px;">Card Code</div>
+			<div style="float:left; margin-left:20px;margin-top:20px;"><?php echo $this->Form->input('c_secure_code', array('label' => false));?></div>
+			<div style="float:left; width:200px; margin-top:20px;">Expire On</div>
+			<div style="float:left; margin-left:20px;margin-top:20px;">
+				<div style="float:left;">
+					<?php echo $this->Form->input('exp_year', array('label' => false, 'style' => 'width:100px;', 'default' => 'Year'));?>
+				</div>
+				<div style="float:left; margin-left:20px;">
+				<?php echo $this->Form->input('exp_month', array('label' => false, 'style' => 'width:100px;', 'default' => 'Month'));?>
+				</div>
+				<div style="clear:both;"></div>
 			</div>
-			<div style="float:left; margin-left:20px;">
-			<?php echo $this->Form->input('exp_month', array('label' => false, 'style' => 'width:100px;', 'default' => 'Month'));?>
-			</div>
-			<div style="clear:both;"></div>
 		</div>
 		<div style="clear:both;"></div>
 	</div>

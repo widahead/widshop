@@ -12,6 +12,8 @@
 	</title>
 	<?php
 		echo $this->Html->css('/wid_shop/css/wid_shop');
+		echo $this->Html->Script('/wid_shop/js/jquery-1.4.2.min'); 
+		echo $this->Html->Script('/wid_shop/js/script');
 	?>
 </head>
 <body>

@@ -65,11 +65,11 @@ class PaypalComponent extends Component {
 	}
 
 	function SetExpressCheckout($paymentInfo=array()){
-		$amount = urlencode($paymentInfo['Order']['theTotal']);
+		$amount = urlencode($paymentInfo['AMOUNT']);
 		$paymentType=urlencode('Sale');
 		$currencyCode=urlencode('USD');
-		$returnURL =urlencode($paymentInfo['Order']['returnUrl']);
-		$cancelURL =urlencode($paymentInfo['Order']['cancelUrl']);
+		$returnURL =urlencode($paymentInfo['RETURN_URL']);
+		$cancelURL =urlencode($paymentInfo['CANCEL_URL']);
 		$nvpstr='&AMT='.$amount.'&PAYMENTACTION='.$paymentType.'&CURRENCYCODE='.$currencyCode.'&RETURNURL='.$returnURL.'&CANCELURL='.$cancelURL;
 		$resArray=$this->hash_call("SetExpressCheckout",$nvpstr);
 		return $resArray;
@@ -85,7 +85,7 @@ class PaypalComponent extends Component {
 		$paymentType='Sale';
 		$currencyCode='USD';
 		$serverName = $_SERVER['SERVER_NAME'];
-		$nvpstr='&TOKEN='.urlencode($paymentInfo['TOKEN']).'&PAYERID='.urlencode($paymentInfo['PAYERID']).'&PAYMENTACTION='.urlencode($paymentType).'&AMT='.urlencode($paymentInfo['ORDERTOTAL']).'&CURRENCYCODE='.urlencode($currencyCode).'&IPADDRESS='.urlencode($serverName);
+		$nvpstr='&TOKEN='.urlencode($paymentInfo['TOKEN']).'&PAYERID='.urlencode($paymentInfo['PAYERID']).'&PAYMENTACTION='.urlencode($paymentType).'&AMT='.urlencode($paymentInfo['AMOUNT']).'&CURRENCYCODE='.urlencode($currencyCode).'&IPADDRESS='.urlencode($serverName);
 		$resArray=$this->hash_call("DoExpressCheckoutPayment",$nvpstr);
 		return $resArray;
 	}

@@ -3,7 +3,9 @@
 		<li>1. Add/Edit Category</li>
 		<li>2. Create/Update Services/product and assign on category</li>
 		<li>3. Create/Update offer on the services</li>
-		<li>4. Add/Edit currency symbol as required</li>
+		<li>4. Select Currency type based on country</li>
+		<li>5. Paypal Do Direct payment method</li>
+		<li>6. Paypal Express Checkout</li>
 		<li>Comming Soon ...</li>
 	</ul>
 	<hr style="margin-bottom:20px;margin-top:5px;"/>

@@ -86,7 +86,7 @@ class OffersController extends WidShopAppController {
 	}
 	public function view($slug = null) {
 		$this->layout = 'default';
-		$offerDetail = $this->Offer->getOfferDetailById($slug);
+		$offerDetail = $this->Offer->getOfferDetailBySlug($slug);
 		if(isset($offerDetail)) {
 			$serviceCapt = $this->Service->find('all', array('conditions' => array('Service.id' => explode(',', $offerDetail['service_id'])), 'fields' => array('Service.name', 'RewriteUrl.url_key')));
 			$this->set('serviceList', $serviceCapt);

@@ -64,9 +64,6 @@ class PagesController extends WidShopAppController {
 		$this->set('productCollection',$productCollection);		
 	}
 	public function beforeFilter() {
-		/** Get all links that are showing on left part of the view */
-		$categories = $this->Category->getAllCategoryLinks();
-		$this->set('categories', $categories);
 		parent::beforeFilter();
 	}
 

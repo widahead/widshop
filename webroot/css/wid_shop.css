@@ -362,7 +362,7 @@ form .error-message {
 .message {
 	clear: both;
 	color: #fff;
-	font-size: 140%;
+	font-size: 16px;
 	font-weight: bold;
 	margin: 0 0 1em 0;
 	padding: 5px;
@@ -901,4 +901,19 @@ height:245px;
 }
 .gen_feature li{
 	margin-left:30px;
+}
+.button {
+	text-decoration: none;
+	padding: 8px;
+	border-radius: 6px;
+	background: grey;
+	margin-top: 10px;
+	color: #fff;
+}
+.back_order_new {
+	color:red;
+	font-style:italic;
+}
+.payment_box label, .payment_box h2{
+	text-align:left;
 }

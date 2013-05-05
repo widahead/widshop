@@ -32,7 +32,7 @@ App::uses('Controller', 'Controller');
  * @link http://book.cakephp.org/2.0/en/controllers.html#the-app-controller
  */
 class WidShopAppController extends AppController {
-	var $uses = array('WidShop.Category', 'WidShop.Service', 'WidShop.Offer', 'WidShop.RewriteUrl', 'WidShop.Currency');
+	var $uses = array('WidShop.Category', 'WidShop.Service', 'WidShop.Offer', 'WidShop.RewriteUrl', 'WidShop.Currency', 'WidShop.BackOrder');
 	public $helpers = array('Html', 'Session', 'WidShop.Image', 'Number');
 	public $components = array('Session');
 	public function beforeRender () {
@@ -40,6 +40,9 @@ class WidShopAppController extends AppController {
 		$this->set('currency_code', $currency_code);
 	}
 	public function beforeFilter() {
+		/** Get all links that are showing on left part of the view */
+		$categories = $this->Category->getAllCategoryLinks();
+		$this->set('categories', $categories);
 		parent::beforeFilter();
 	}
 }

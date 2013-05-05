@@ -10,10 +10,11 @@ class RewriteUrl extends WidShopAppModel {
 		App::import('Model', "WidShop.".$HashDetail['RewriteUrl']['controller_name']);
 		$productDetail = new $HashDetail['RewriteUrl']['controller_name'];
 		$productInfo = array();
-		if(!empty($HashDetail['RewriteUrl']['service_id']))
+		if(!empty($HashDetail['RewriteUrl']['service_id'])) {
 			$productInfo = $productDetail->findById($HashDetail['RewriteUrl']['service_id']);
-		else
+		} else {
 			$productInfo = $productDetail->findById($HashDetail['RewriteUrl']['offer_id']);
+		}
 		if(isset($productInfo[$HashDetail['RewriteUrl']['controller_name']]['start_date']) && $productInfo[$HashDetail['RewriteUrl']['controller_name']]['start_date']  < time('Y-m-d H:i:s') && $productInfo[$HashDetail['RewriteUrl']['controller_name']]['end_date']  > time('Y-m-d H:i:s')) {
 			return false;
 		}
@@ -28,6 +29,18 @@ class RewriteUrl extends WidShopAppModel {
 			return null;
 		}
 		return $checkPrd['RewriteUrl'];
+	}
+
+	public function getOffersServiceIdByHashId($identity) {
+		$HashDetail = $this->find('first', array('conditions' => array('identity' => $identity), 'fields' => array('offer_id')));
+		App::import('Model', "WidShop.Offer");
+		$Offer = new Offer;
+		$offerInfo = array();
+		$offerInfo = $Offer->findById($HashDetail['RewriteUrl']['offer_id']);
+		if(empty($offerInfo)) {
+			return null;
+		}
+		return $offerInfo['Offer']['service_id'];
 	}
 }
 ?>

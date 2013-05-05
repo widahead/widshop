@@ -20,3 +20,7 @@
 	Router::connect('/admin/currencies', array('admin' => true, 'plugin' => 'WidShop', 'controller' => 'currencies', 'action' => 'index'));
 	Router::connect('/admin/feeds_generator', array('admin' => true, 'plugin' => 'WidShop', 'controller' => 'feeds_generator', 'action' => 'index'));
 	Router::connect('/orders/confirm/*', array('plugin' => 'WidShop', 'controller' => 'orders', 'action' => 'confirm'));
+	Router::connect('/back_orders/list.html', array('plugin' => 'WidShop', 'controller' => 'back_orders', 'action' => 'index'));
+	Router::connect('/back_orders/:slug', array('plugin' => 'WidShop', 'controller' => 'back_orders', 'action' => 'backOrderView'), array('pass' => array('slug')));
+
+	Router::connect('/orders/order_success/*', array('plugin' => 'WidShop', 'controller' => 'orders', 'action' => 'order_success'));

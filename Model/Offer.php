@@ -45,11 +45,13 @@ class Offer extends WidShopAppModel {
 		else 
 			return true;
 	}
-	public function getOfferDetailById($slug) {
+	public function getOfferDetailBySlug($slug, $isActive = true) {
 		$conditions = array();
 		$conditions[] = 'RewriteUrl.url_key  =  "'.$slug.'"';
-		$conditions[] = 'start_date	  <  "'.date('Y-m-d H:i:s').'"';
-		$conditions[] = 'end_date	  >  "'.date('Y-m-d H:i:s').'"';
+		if($isActive) {
+			$conditions[] = 'start_date	  <  "'.date('Y-m-d H:i:s').'"';
+			$conditions[] = 'end_date	  >  "'.date('Y-m-d H:i:s').'"';
+		}
 		$condition = implode(' AND ', $conditions);
 		$offerDetail = $this->find('all', array('conditions' => array($condition)));
 		if (count($offerDetail) != 0) {
@@ -57,6 +59,15 @@ class Offer extends WidShopAppModel {
 			return $offerDetail[0]['Offer'];
 		}
 		return null;
+	}
+
+	public function getExpiredOfferList() {
+		$offerList = array();
+		$conditions[] = 'end_date < "'.date('Y-m-d H:i:s').'"';
+		$conditions[] = 'one_day_deal != 0';
+		$condition = implode(' AND ', $conditions);
+		$offerList = $this->find('all', array('conditions' => array($condition)));
+		return $offerList;
 	}
 }
 ?>

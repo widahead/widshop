@@ -647,3 +647,19 @@ INSERT INTO `currency_list` (`id`, `country`, `currency_code`) VALUES
 (242, 'Yemen', 'YER'),
 (243, 'Zambia', 'ZMW'),
 (244, 'Zimbabwe', 'ZWD');
+
+
+CREATE TABLE IF NOT EXISTS `back_orders` (
+  `id` int(10) NOT NULL AUTO_INCREMENT,
+  `f_name` varchar(100) DEFAULT NULL,
+  `l_name` varchar(100) DEFAULT NULL,
+  `email` varchar(100) DEFAULT NULL,
+  `min_price` double(10,2) DEFAULT NULL,
+  `max_price` double(10,2) DEFAULT NULL,
+  `service_id` varchar(100) DEFAULT NULL,
+  `act_amount` double(10,2) DEFAULT NULL,
+  `processed` tinyint(1) DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
